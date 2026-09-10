@@ -1,0 +1,15 @@
+# Modified from https://forum.gitlab.com/t/example-gitlab-runner-docker-compose-configuration/67344
+# & https://github.com/Yuvadi29/Github-Actions-Series/blob/master/my-runner/docker-compose.yml
+# version: "3.8"
+services:
+  runner:
+    build: .
+    image: my-github-runner
+    env_file: .env
+    environment:
+      # DOCKER_TLS_CERTDIR: ""
+      RUNNER_NAME: my-docker-runner
+      RUNNER_LABELS: self-hosted,docker,linux
+    restart: unless-stopped
+    # command:
+    #   - --storage-driver=overlay2
